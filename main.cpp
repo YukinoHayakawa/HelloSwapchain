@@ -56,9 +56,9 @@ public:
         mRuntime->inputManager()->virtualKeyboard()->removeEventListener(this);
     }
 
-    void onKeyStateChange(const KeyEvent &e) override
+    bool onKeyStateChange(const KeyEvent &e) override
     {
-        if(!e.pressed) return;
+        if(!e.pressed) return true;
         switch(e.key_code)
         {
             case KeyCode::ENTER:
@@ -103,6 +103,7 @@ public:
                 break;
             default: break ;
         }
+        return true;
     }
 
     void onWindowResizeEnd(const WindowSizeEvent &e) override
