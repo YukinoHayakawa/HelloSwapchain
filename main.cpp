@@ -14,8 +14,8 @@
 using namespace usagi;
 
 class HelloSwapchain
-    : public KeyEventListener,
-    public WindowEventListener
+    : public KeyEventListener
+    , public WindowEventListener
 {
     std::shared_ptr<Runtime> mRuntime;
     std::shared_ptr<Window> mWindow;
@@ -48,12 +48,6 @@ public:
         // Setting up input
         mRuntime->initInput();
         mRuntime->inputManager()->virtualKeyboard()->addEventListener(this);
-    }
-
-    ~HelloSwapchain()
-    {
-        mWindow->removeEventListener(this);
-        mRuntime->inputManager()->virtualKeyboard()->removeEventListener(this);
     }
 
     bool onKeyStateChange(const KeyEvent &e) override
